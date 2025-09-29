@@ -5,6 +5,8 @@ import mongoose from "mongoose";
 import "reflect-metadata";
 import userRoutes from "./routes/userRoutes"
 import productRoutes from "./routes/productRoutes";
+import authRoutes from "./routes/authRoutes";
+
 
 dotenv.config();
 const app = express();
@@ -14,6 +16,9 @@ const mongoUri = process.env.MONGODB_URI!;
 app.use(express.json({ limit: '10mb' }));
 app.use("/api/products", productRoutes);
 app.use('/api/users', userRoutes);
+// ...
+app.use("/api/auth", authRoutes);
+app.use("/api/products", productRoutes);
 
 app.get('/', (req, res) => {
     res.send('Holaaaa!')
